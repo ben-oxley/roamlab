@@ -22,7 +22,7 @@ services:
     cap_add:
       - NET_ADMIN
     restart: unless-stopped
-   unifi-controller:
+  unifi-controller:
     image: lscr.io/linuxserver/unifi-controller
     container_name: unifi-controller
     environment:
