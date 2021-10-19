@@ -43,3 +43,13 @@ services:
       - 6789:6789 #optional
       - 5514:5514/udp #optional
     restart: unless-stopped
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    ports:
+      - "8000:8000/tcp"
+      - "9443:9443/tcp"
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - './portainer/data/:/data'
+    restart: unless-stopped
