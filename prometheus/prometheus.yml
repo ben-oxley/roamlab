@@ -23,4 +23,4 @@ scrape_configs:
     scrape_interval: 5s
 
     static_configs:
-      - targets: ['node_exporter:9100']
+      - targets: ['172.17.0.1:9100']
