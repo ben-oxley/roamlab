@@ -53,3 +53,11 @@ services:
       - '/var/run/docker.sock:/var/run/docker.sock'
       - './portainer/data/:/data'
     restart: unless-stopped
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090/tcp"
+    volumes:
+      - '/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml'
+    restart: unless-stopped
