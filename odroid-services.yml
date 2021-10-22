@@ -71,3 +71,13 @@ services:
     restart: unless-stopped
     volumes:
       - '/:/host:ro,rslave'
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-simple-json-datasource
+    volumes:
+      - './grafana/grafana-storage:/var/lib/grafana'
+    restart: unless-stopped
+    ports:
+      - 3000:3000
