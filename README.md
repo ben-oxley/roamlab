@@ -12,3 +12,5 @@ prometheus: http://192.168.8.106:9090/graph
 cpu usage http://192.168.8.106:9090/graph?g0.expr=sum%20by%20(mode%2Cinstance)%20(rate(node_cpu_seconds_total[1m]))%20&g0.tab=0&g0.stacked=0&g0.show_exemplars=0&g0.range_input=2h
 
 portainer: https://192.168.8.106:9443
+
+grafana: http://192.168.8.106:3000
