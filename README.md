@@ -14,3 +14,6 @@ cpu usage http://192.168.8.106:9090/graph?g0.expr=sum%20by%20(mode%2Cinstance)%2
 portainer: https://192.168.8.106:9443
 
 grafana: http://192.168.8.106:3000
+
+prometheus config:
+- Openwrt collector: https://grafana.com/blog/2021/02/09/how-i-monitor-my-openwrt-router-with-grafana-cloud-and-prometheus/ for this I needed to enable internal ssh to edit the file
