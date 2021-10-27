@@ -60,6 +60,7 @@ services:
       - "9090:9090/tcp"
     volumes:
       - './prometheus/prometheus.yml:/etc/prometheus/prometheus.yml'
+      - 'prometheus-data:/prometheus'
     restart: unless-stopped
   node_exporter:
     image: quay.io/prometheus/node-exporter:latest
@@ -83,5 +84,6 @@ services:
       - 'grafana-storage:/var/lib/grafana'
 volumes:
   grafana-storage: {}
+  prometheus-data: {}
     
 
