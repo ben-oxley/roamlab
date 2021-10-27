@@ -80,9 +80,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - './grafana/data:/var/lib/grafana'
-      - './grafana/conf:/etc/grafana'
-      - './grafana/logs:/var/log/grafana'
+      - 'grafana-storage:/var/lib/grafana'
     
     
 
