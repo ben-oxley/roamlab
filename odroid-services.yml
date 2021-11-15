@@ -82,6 +82,11 @@ services:
       - 3000:3000
     volumes:
       - 'grafana-storage:/var/lib/grafana'
+  dashboard:
+    image: nginx
+    container_name: dashboard
+    ports: 
+      - 80:80
 volumes:
   grafana-storage: {}
   prometheus-data: {}
