@@ -16,8 +16,8 @@ echo \
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 sudo apt install curl -y
-sudo chmod +x /usr/local/bin/docker-compose
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.0.1/docker-compose-linux-armv7" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 sudo sed -i 's/#DNSStubListener=yes/DNSStubListener=no/' /etc/systemd/resolved.conf
 sudo sh -c 'rm /etc/resolv.conf && ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf'
 sudo apt install fancontrol -y
