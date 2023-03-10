@@ -12,3 +12,11 @@ chmod +x cephadm
 sudo apt install -y cephadm catatonit
 ipaddr=$(ip a s eth0 | egrep -o 'inet [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | cut -d' ' -f2)
 cephadm bootstrap --mon-ip $ipaddr
+cephadm shell -- ceph orch apply osd --all-available-devices --single-host-defaults
+cephadm shell -- ceph mgr module enable dashboard
+cephadm shell -- ceph dashboard create-self-signed-cert
+cephadm shell <<EOF
+date +%s | sha256sum | base64 | head -c 32 > password.txt
+ceph dashboard ac-user-create ben -i password.txt administrator
+cat password.txt
+EOF
