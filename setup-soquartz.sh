@@ -19,6 +19,9 @@ sudo apt install -y telegraf
 sudo apt install -y mosquitto mosquitto-clients
 sudo systemctl start mosquitto
 
+#Install mDNS
+sudo apt install -y avahi-daemon
+
 #Install podman
 sudo apt-get -y install podman
 
