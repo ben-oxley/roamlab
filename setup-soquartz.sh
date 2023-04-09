@@ -15,6 +15,10 @@ sudo service influxdb start
 sudo apt install -y telegraf
 # configure influx and telegraf config at /etc/telegraf/telegraf.conf
 
+#Install MQTT
+sudo apt install -y mosquitto mosquitto-clients
+sudo systemctl start mosquitto
+
 #Install podman
 sudo apt-get -y install podman
 
