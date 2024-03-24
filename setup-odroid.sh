@@ -1,7 +1,9 @@
-#To grab this scrip, you'll need git
-#sudo apt install git -y
 #!/bin/bash
 
+#To grab this script, you'll need git
+#sudo apt install git -y
+
+#Let's get everything up to date and install the base tooles we'll need
 sudo apt update && sudo apt upgrade -y
 sudo apt-get install \
     apt-transport-https \
@@ -9,17 +11,26 @@ sudo apt-get install \
     curl \
     gnupg \
     lsb-release -y
+
+#Install docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+
+#Install docker compose
 sudo apt install curl -y
 sudo curl -L "https://github.com/docker/compose/releases/download/v2.0.1/docker-compose-linux-armv7" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
+
+#Don't use internal DNS, as we want to use the pihole DNS
 sudo sed -i 's/#DNSStubListener=yes/DNSStubListener=no/' /etc/systemd/resolved.conf
 sudo sh -c 'rm /etc/resolv.conf && ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf'
-sudo apt install fancontrol -y
 sudo systemctl restart systemd-resolved
+
+#Install fan control for the odroid
+sudo apt install fancontrol -y
+
 #then reboot
